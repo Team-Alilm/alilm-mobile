@@ -1,13 +1,42 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Pressable } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { House, List, MessageSquareMore, Plus, UserRound } from 'lucide-react-native';
 import { View } from 'react-native';
+import styled from 'styled-components';
+
+
+export const ButtonContainer = styled(Pressable).attrs<BottomTabBarButtonProps>(
+  (props) => ({
+    ...props,
+    android_ripple:null
+  })
+)`
+  top: -30px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: box-none;
+`;
+
+export const Button = styled(View)`
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  background-color: orange;
+  justify-content: center;
+  align-items: center;
+  /* elevation: 5; */
+`;
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -26,7 +55,7 @@ export default function TabLayout() {
           },
           default: {},
         }),
-      }}><MessageSquareMore size={36} />
+      }}>
       <Tabs.Screen
         name="home"
         options={{
@@ -41,30 +70,21 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <List size={24} color={color} />,
         }}
       />
-      
+
       <Tabs.Screen
         name="create"
         options={{
-          title: "",
-          tabBarIcon: () => (
-            <View
-              style={{
-                position: "absolute",
-                bottom: 0, // 살짝 위로 띄움
-                height: 64,
-                width: 64,
-                borderRadius: 32,
-                backgroundColor: "#f2a600",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Plus size={24}  />
-            </View>
+          title: '',
+          tabBarButton :(props:BottomTabBarButtonProps)=> (
+              <ButtonContainer {...props} >
+                <Button>
+                  <Plus size={24} color="white" />
+                </Button>
+              </ButtonContainer>
           ),
         }}
       />
-
+      
       <Tabs.Screen
         name="community"
         options={{
