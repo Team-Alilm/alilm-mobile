@@ -2,12 +2,13 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform, Pressable } from 'react-native';
 
+import HomeIcon from "@/assets/icons/home_icon.svg";
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
-import { House, List, MessageSquareMore, Plus, UserRound } from 'lucide-react-native';
+import { List, MessageSquareMore, Plus, UserRound } from 'lucide-react-native';
 import { View } from 'react-native';
 import styled from 'styled-components';
 
@@ -60,7 +61,7 @@ export default function TabLayout() {
         name="home"
         options={{
           title: '홈',
-          tabBarIcon: ({ color }) => <House size={24} color={color}/>,
+          tabBarIcon: ({ color }) => <HomeIcon width={24} height={24} fill={color} />,
         }}
       />
       <Tabs.Screen
