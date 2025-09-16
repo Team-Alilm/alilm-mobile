@@ -2,13 +2,15 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform, Pressable } from 'react-native';
 
-import HomeIcon from "@/assets/icons/home_icon.svg";
 import { HapticTab } from '@/components/HapticTab';
+import SvgCategoryIcon from '@/components/ui/icons/CategoryIcon';
+import SvgCommunityIcon from '@/components/ui/icons/CommunityIcon';
+import SvgHomeIcon from '@/components/ui/icons/HomeIcon';
+import SvgMyPageIcon from '@/components/ui/icons/MyPageIcon';
 import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
-import { List, MessageSquareMore, Plus, UserRound } from 'lucide-react-native';
+import { Plus } from 'lucide-react-native';
 import { View } from 'react-native';
 import styled from 'styled-components';
 
@@ -45,7 +47,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: "#ffa500",
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -61,14 +63,14 @@ export default function TabLayout() {
         name="home"
         options={{
           title: '홈',
-          tabBarIcon: ({ color }) => <HomeIcon width={24} height={24} fill={color} />,
+          tabBarIcon: ({ color }) => <SvgHomeIcon width={24} height={24} color={color}/>,
         }}
       />
       <Tabs.Screen
         name="category"
         options={{
           title: '카테고리',
-          tabBarIcon: ({ color }) => <List size={24} color={color} />,
+          tabBarIcon: ({ color }) => <SvgCategoryIcon width={24} height={24}  color={color} />,
         }}
       />
 
@@ -90,14 +92,14 @@ export default function TabLayout() {
         name="community"
         options={{
           title: '커뮤니티',
-          tabBarIcon: ({ color }) => <MessageSquareMore size={24}  color={color} />,
+          tabBarIcon: ({ color }) => <SvgCommunityIcon width={24} height={24}  color={color} />,
         }}
       />
       <Tabs.Screen
         name="myPage"
         options={{
           title: '마이페이지',
-          tabBarIcon: ({ color }) => <UserRound size={24}  color={color} />,
+          tabBarIcon: ({ color }) => <SvgMyPageIcon  width={24} height={24}  color={color} />,
         }}
       />
     </Tabs>
