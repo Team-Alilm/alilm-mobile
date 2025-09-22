@@ -18,7 +18,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
       <Stack>
         
         
@@ -26,23 +26,23 @@ export default function RootLayout() {
           headerShown: false,
         }}
         />
-        <Stack.Screen name="(tabs)" options={{ 
+        {/* <Stack.Screen name="(tabs)" options={{ 
           headerShown: true,
-          // headerTitle: () => (   //여기 header
-          //   <View
-          //     style={{
-          //       height: 48,
-          //       width: 48,
-          //       justifyContent: "center",
-          //       alignItems: "center",
-          //       backgroundColor: "#111111",
-          //     }}
-          //   >
-          //     <Text style={{ color: "white" }}>meow</Text>
-          //   </View>
-          // ),
+          headerTitle: () => (   //여기 header
+            <View
+              style={{
+                height: 48,
+                width: 48,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#111111",
+              }}
+            >
+              <Text style={{ color: "white" }}>meow</Text>
+            </View>
+          ),
           
-          }} />
+          }} /> */}
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
